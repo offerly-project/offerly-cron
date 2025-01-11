@@ -24,7 +24,7 @@ export class Scheduler {
 	};
 
 	private static _scheduleJobs = async () => {
-		await this.agendaInstance.every("12 hours", JobsEn.EXPIRE_OFFERS);
+		await this.agendaInstance.every("1 week", JobsEn.EXPIRE_OFFERS);
 	};
 
 	static schedule = async () => {

@@ -1,9 +1,12 @@
 export const logJob = (cb: Function) => (job: string) => async () => {
 	try {
-		console.log(`Running job: ${job}`);
+		console.group(`Job: ${job}`);
+		console.log(`Starting job: ${job}`);
 		await cb();
-		console.log(`Job ${job} completed`);
+		console.log(`Job ${job} completed successfully`);
 	} catch (e) {
-		console.log(`Job ${job} failed with error: ${e}`);
+		console.error(`Job ${job} failed with error:`, e);
+	} finally {
+		console.groupEnd();
 	}
 };

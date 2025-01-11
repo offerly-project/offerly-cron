@@ -1,5 +1,6 @@
 import { Agenda } from "agenda";
 import { env } from "../config";
+import { logJob } from "../utils";
 import { Jobs } from "./jobs";
 
 export enum JobsEn {
@@ -12,7 +13,10 @@ export class Scheduler {
 	});
 
 	private static _scheduleExpireOffers = async () => {
-		this.agendaInstance.define(JobsEn.EXPIRE_OFFERS, Jobs.expireOffers);
+		this.agendaInstance.define(
+			JobsEn.EXPIRE_OFFERS,
+			logJob(Jobs.expireOffers)(JobsEn.EXPIRE_OFFERS)
+		);
 	};
 
 	private static _defineJobs = async () => {

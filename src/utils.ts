@@ -1,4 +1,4 @@
-export const logJob = (cb: Function) => async (job: string) => {
+export const logJob = (cb: Function) => (job: string) => async () => {
 	try {
 		console.log(`Running job: ${job}`);
 		await cb();

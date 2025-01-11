@@ -24,13 +24,12 @@ export class Scheduler {
 	};
 
 	private static _scheduleJobs = async () => {
-		await this.agendaInstance.every("10 seconds", JobsEn.EXPIRE_OFFERS);
+		await this.agendaInstance.every("15 seconds", JobsEn.EXPIRE_OFFERS);
 	};
 
 	static schedule = async () => {
 		await this._defineJobs();
+		await this._scheduleJobs();
 		await this.agendaInstance.start();
-
-		this._scheduleJobs();
 	};
 }

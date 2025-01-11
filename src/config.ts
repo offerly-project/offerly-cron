@@ -12,4 +12,9 @@ export const env = envSchema.parse(process.env);
 
 const mongoClient = new MongoClient(env.DB_URL);
 
+export const connectToMongo = async () => {
+	await mongoClient.connect();
+	console.log("Connected to MongoDB");
+};
+
 export const db = mongoClient.db("offerly");

@@ -3,7 +3,7 @@ import { env } from "../config";
 import { Jobs } from "./jobs";
 
 export enum JobsEn {
-	EXPIRE_OFFERS = "expire offers",
+	EXPIRE_OFFERS = "Expire Offers",
 }
 
 export class Scheduler {
@@ -20,12 +20,13 @@ export class Scheduler {
 	};
 
 	private static _scheduleJobs = async () => {
-		await this.agendaInstance.every("5 seconds", JobsEn.EXPIRE_OFFERS);
+		await this.agendaInstance.every("10 seconds", JobsEn.EXPIRE_OFFERS);
 	};
 
 	static schedule = async () => {
 		await this._defineJobs();
 		await this.agendaInstance.start();
+
 		this._scheduleJobs();
 	};
 }
